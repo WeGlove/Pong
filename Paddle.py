@@ -1,6 +1,6 @@
 import numpy
 from Simples.AABB import AABB
-from Events.Ball_moved import Ball_moved
+from Events import Paddle_moved
 
 
 class Paddle(AABB):
@@ -44,4 +44,5 @@ class Paddle(AABB):
             self.local = new_local if new_local <= 1 else 1
 
             self.set_position(self.interval[0] * (1-self.local) + self.interval[1] * self.local)
+        return Paddle_moved.Paddle_moved(self)
 

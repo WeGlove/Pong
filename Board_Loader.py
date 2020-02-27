@@ -33,7 +33,7 @@ class Board_Loader:
                 wall_dimensions = wall_data["dimensions"]
                 bricks.append(Wall.Wall(wall_data["position"], wall_dimensions[0], wall_dimensions[1]))
 
-            board = Board.Board(board_dimensions[0],board_dimensions[1], paddle=paddle, balls=balls, bricks=bricks)
+            board = Board.Board(board_dimensions[0], board_dimensions[1], paddle=paddle, balls=balls, bricks=bricks)
 
             return board
 

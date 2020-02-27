@@ -1,11 +1,10 @@
 class Ball_moved:
+    """
+    The Ball moved Event updates the balls in the board
+    """
 
-    def __init__(self, ball_index, position, direction):
-        self.ball_index = ball_index
-        self.position = position
-        self.direction = direction
+    def __init__(self, balls):
+        self.balls = balls
 
     def update(self, board):
-        ball = board.balls[self.ball_index]
-        ball.set_position(self.position)
-        ball.set_direction(self.direction)
+        board.balls = self.balls

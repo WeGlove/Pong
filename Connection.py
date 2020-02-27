@@ -1,7 +1,9 @@
 import _thread
 
-
 class Connection:
+    """
+    The connection handling ocmmunication between a Server and client thread
+    """
 
     def __init__(self):
         self.server_lock = _thread.allocate_lock()
@@ -10,38 +12,30 @@ class Connection:
         self.to_server = []
         self.to_clients = []
 
-    def push_event_to_server(self, event):
-        with self.server_lock:
-            self.to_server.append(event)
-
-    def push_event_to_client(self, event):
-        with self.client_lock:
-            self.to_clients.append(event)
-
-    def push_events_to_server(self, events):
+    def push_to_server(self, events):
         with self.server_lock:
             self.to_server.extend(events)
 
-    def push_events_to_client(self, events):
+    def push_to_clients(self, events):
         with self.client_lock:
             self.to_clients.extend(events)
 
-    def get_last_events_server(self):
+    def pop_server(self):
         with self.server_lock:
-            msgs = self.to_server.copy()
+            temp = self.to_server
             self.to_server = []
-            return msgs
+        return temp
 
-    def get_last_events_client(self):
+    def pop_clients(self):
         with self.client_lock:
-            msgs = self.to_clients.copy()
+            temp = self.to_clients
             self.to_clients = []
-            return msgs
+        return temp
 
-    def server_has_new_events(self):
-        with self.server_lock:
-            return len(self.to_server) > 0
-
-    def client_has_new_events(self):
+    def clients_have_events(self):
         with self.client_lock:
             return len(self.to_clients) > 0
+
+    def server_has_events(self):
+        with self.server_lock:
+            return len(self.to_server) > 0
