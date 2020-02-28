@@ -35,8 +35,7 @@ with open("configuration.json") as config:
             server = Server(board, connection, refresh_rate=refresh_rate, speed=speed)
             client = Client(display, connection)
             threading.Thread(target=server.run).start()
-            threading.Thread(target=client.run).start()
-
+            client.run()
         elif text == "help":
             print("Available Commands: editor, help, game, exit")
         elif text == "exit":

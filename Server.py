@@ -1,5 +1,6 @@
 from Events import Board_set
 
+
 class Server:
 
     def __init__(self, board, connection, refresh_rate=1/60, speed=1.0):
@@ -7,6 +8,7 @@ class Server:
         self.refresh_rate = refresh_rate
         self.speed = speed
         self.connection = connection
+        self.paused = False
 
     def run(self):
         self.connection.push_to_clients([Board_set.Board_set(self.board)])
@@ -21,8 +23,8 @@ class Server:
             while not self.connection.server_has_events():
                 pass
             print("Server: Received direction")
-            self.connection.push_to_clients(self.board.tick(self.speed * self.refresh_rate,
-                                                            self.connection.pop_server()[0]))
+
+            self.connection.push_to_clients(self.connection.pop_server()[0].update(self))
             print("Server: Sent updates")
             now = time.time()
             time.sleep(before - now + self.refresh_rate if before - now + self.refresh_rate > 0 else 0)

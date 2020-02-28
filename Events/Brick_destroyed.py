@@ -10,5 +10,5 @@ class Brick_destroyed:
         """
         self.tree = tree
 
-    def update(self, board):
-        board.bricks = self.tree
+    def update(self, model):
+        model.board.bricks = self.tree

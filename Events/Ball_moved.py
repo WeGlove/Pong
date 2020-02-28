@@ -6,5 +6,5 @@ class Ball_moved:
     def __init__(self, balls):
         self.balls = balls
 
-    def update(self, board):
-        board.balls = self.balls
+    def update(self, model):
+        model.board.balls = self.balls

@@ -1,10 +1,9 @@
 # Pong
 
 ## Current Issues and Problems
-- Make server Client Architecture
-    - Make smarter connections
-- Implement Event Pattern
-    - The Events are really inefficient
+- Make smarter connections
+- The Events are really inefficient
+- Implement Command Pattern
 - Add Squishing Rule
 
 

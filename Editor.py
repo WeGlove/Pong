@@ -7,6 +7,7 @@ import numpy
 import Paddle
 import Board_Loader
 
+
 class Editor:
 
     def __init__(self, display, refresh_rate=1/60):

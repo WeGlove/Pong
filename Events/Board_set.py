@@ -5,3 +5,6 @@ class Board_set:
 
     def __init__(self, board):
         self.board = board
+
+    def update(self, model):
+        model.board = self.board

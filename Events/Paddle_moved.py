@@ -10,5 +10,5 @@ class Paddle_moved:
         """
         self.paddle = paddle
 
-    def update(self, board):
-        board.paddle = self.paddle
+    def update(self, model):
+        model.board.paddle = self.paddle
