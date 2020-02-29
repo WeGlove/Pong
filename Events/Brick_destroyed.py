@@ -1,4 +1,7 @@
-class Brick_destroyed:
+from Events.Event import Event
+
+
+class Brick_destroyed(Event):
     """
     The Brick_destroyed Event
     Updates the board to the new state of the bvh

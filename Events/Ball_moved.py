@@ -1,4 +1,7 @@
-class Ball_moved:
+from Events.Event import Event
+
+
+class Ball_moved(Event):
     """
     The Ball moved Event updates the balls in the board
     """

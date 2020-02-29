@@ -1,4 +1,7 @@
-class Paddle_moved:
+from Events.Event import Event
+
+
+class Paddle_moved(Event):
     """
     The Brick_destroyed Event
     Updates the board to the new state of the bvh

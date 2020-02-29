@@ -1,4 +1,7 @@
-class Board_set:
+from Events.Event import Event
+
+
+class Board_set(Event):
     """
     The Boards set event is meant to set up the playing field and thus only contains a board and no update function
     """

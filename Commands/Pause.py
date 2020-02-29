@@ -1,4 +1,11 @@
-class Pause:
+from Commands.Command import Command
 
-    def update(self, model):
-        model.paused = not model.paused
+
+class Pause(Command):
+
+    def __init__(self, setting):
+        self.setting = setting
+
+    def execute(self, model):
+        model.paused = self.setting
+        return []

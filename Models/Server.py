@@ -24,7 +24,7 @@ class Server:
                 pass
             print("Server: Received direction")
 
-            self.connection.push_to_clients(self.connection.pop_server()[0].update(self))
+            self.connection.push_to_clients(self.connection.pop_server()[0].execute(self))
             print("Server: Sent updates")
             now = time.time()
             time.sleep(before - now + self.refresh_rate if before - now + self.refresh_rate > 0 else 0)
