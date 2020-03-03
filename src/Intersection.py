@@ -1,6 +1,6 @@
 class Intersection:
 
-    def __init__(self, t, normal, intersected, parents = None):
+    def __init__(self, t, normal, intersected, parents=None):
         self.t = t
         self.normal = normal
         self.intersected = intersected
@@ -10,4 +10,4 @@ class Intersection:
         self.parents.append(parent)
 
     def __str__(self):
-        return "Intersection: t=" + str(self.t) + " Normal: " + str(self.normal)
+        return f"Intersection: t={self.t} Normal={self.normal} Intersected: {self.intersected}"

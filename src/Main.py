@@ -1,14 +1,14 @@
-from Displays import Display_modular
+from src.Views import Display_modular
 import pygame
-from Models.Editor import Editor
-import Board_Loader
+from src.Models.Editor import Editor
+from src import Board_Loader
 import json
-from Models.Server import Server
-from Models.Client import Client
-from Connection import Connection
+from src.Models.Server import Server
+from src.Models.Client import Client
+from src.Connection import Connection
 import threading
 
-with open("configuration.json") as config:
+with open("Resources\\configuration.json") as config:
     data = json.load(config)
     refresh_rate = 1 / data["refresh_rate"]
     speed = data["speed"]
@@ -44,4 +44,4 @@ with open("configuration.json") as config:
             print("Good Night")
             break
         else:
-            print("Command <", text, "> not found, try < help >")
+            print(f"Command <{text}> not found, try < help >")

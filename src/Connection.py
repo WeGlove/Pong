@@ -1,4 +1,5 @@
 import _thread
+import threading
 
 class Connection:
     """
@@ -39,3 +40,11 @@ class Connection:
     def server_has_events(self):
         with self.server_lock:
             return len(self.to_server) > 0
+
+    def server_wait_for_msg(self):
+        while not self.server_has_events():
+            pass
+
+    def client_wait_for_msg(self):
+        while not self.clients_have_events():
+            pass

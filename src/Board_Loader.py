@@ -1,11 +1,6 @@
 import json
-import Board
-import Ball
-import Brick
-import Wall
-import Paddle
+from src import Ball, Brick, Board, Paddle, Wall
 
-import numpy
 
 class Board_Loader:
 
@@ -26,7 +21,8 @@ class Board_Loader:
             bricks = []
             for brick_data in bricks_data:
                 brick_dimensions = brick_data["dimensions"]
-                bricks.append(Brick.Brick(brick_data["position"], brick_dimensions[0], brick_dimensions[1], brick_data["hits"]))
+                bricks.append(
+                    Brick.Brick(brick_data["position"], brick_dimensions[0], brick_dimensions[1], brick_data["hits"]))
 
             walls_data = data["Walls"]
             for wall_data in walls_data:

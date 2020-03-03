@@ -1,5 +1,5 @@
 from Simples.BVH import BVH
-import Brick
+from src import Brick
 from Events import Ball_moved
 from Events import Brick_destroyed
 
@@ -11,7 +11,7 @@ class Board:
         self.height = height
 
         self.balls = [] if balls is None else balls
-        self.paddle = paddle
+        self.paddle = paddle #TODO paddle broke
         self.bricks = BVH([] if bricks is None else bricks)
         self.bricks.divide()
         self.brick_count = 0 if bricks is None else len(bricks)
@@ -56,7 +56,8 @@ class Board:
                     intersection.parents[-1].simples.remove(intersection.intersected)
                     self.bricks_destroyed += 1
                     self.brick_count -= 1
-                print(intersection.intersected)
+                print(remaining_balls[min])
+                print(intersection)
                 remaining_balls[min].move(t)
                 remaining_balls[min].reflect(intersection.normal)
                 speeds[min] -= speed

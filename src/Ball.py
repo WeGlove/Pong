@@ -1,5 +1,6 @@
-from Ray import Ray
+from src.Ray import Ray
 import numpy
+
 
 class Ball(Ray):
 
@@ -7,7 +8,7 @@ class Ball(Ray):
         Ray.__init__(self, position, velocity, radius)
 
     def __str__(self):
-        return "Ball:\n\t\tPosition:" + str(self.position) + " Velocity: " + str(self.direction)
+        return f"Ball: Position={self.position} Velocity: {self.direction} Radius={self.error}"
 
     def to_json(self):
         return {"position": [int(self.position[0]), int(self.position[1])],
