@@ -1,5 +1,5 @@
 import pygame
-from src.Peripherals.Mouse import Mouse
+from src.Backends.Peripherals.Mouse import Mouse
 
 
 class Pygame_Mouse(Mouse):
@@ -18,3 +18,6 @@ class Pygame_Mouse(Mouse):
 
     def right_clicked(self):
         return pygame.mouse.get_pressed()[2]
+
+    def update(self):
+        pygame.event.get()

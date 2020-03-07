@@ -1,5 +1,5 @@
-from Simples.Simple import Simple
-from Simples.AABB import AABB
+from src.Simples.Simple import Simple
+from src.Simples.AABB import AABB
 import numpy
 
 

@@ -1,7 +1,7 @@
-from Simples.BVH import BVH
+from src.Simples.BVH import BVH
 from src import Brick
-from Events import Ball_moved
-from Events import Brick_destroyed
+from src.Events import Ball_moved
+from src.Events import Brick_destroyed
 
 
 class Board:

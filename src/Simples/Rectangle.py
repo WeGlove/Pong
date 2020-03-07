@@ -1,4 +1,4 @@
-from Simples.AABB import AABB
+from src.Simples.AABB import AABB
 import numpy
 import math
 

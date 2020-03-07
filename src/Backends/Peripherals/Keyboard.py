@@ -14,3 +14,7 @@ class Keyboard:
     @abstractmethod
     def arePressed(self, keys):
         pass
+
+    @abstractmethod
+    def update(self):
+        pass

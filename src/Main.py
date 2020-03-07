@@ -7,12 +7,15 @@ from src.Models.Server import Server
 from src.Models.Client import Client
 from src.Connection import Connection
 import threading
+from src.Backends.Pygame import Pygame as pyback
 
 with open("Resources\\configuration.json") as config:
     data = json.load(config)
     refresh_rate = 1 / data["refresh_rate"]
     speed = data["speed"]
     path = data["path"]
+
+    backend = pyback()
 
     while True:
         text = input("Type in a command:")
@@ -24,7 +27,7 @@ with open("Resources\\configuration.json") as config:
                                                                   pygame.font.SysFont("timesnewroman", 72), 0xFFFF00)
 
             server = Server(board, connection, refresh_rate=refresh_rate, speed=speed)
-            editor = Editor(display, connection)
+            editor = Editor(display, connection, backend)
             threading.Thread(target=server.run).start()
             editor.run()
         elif text == "game":

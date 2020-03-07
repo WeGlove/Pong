@@ -1,15 +1,17 @@
 import pygame
-from Commands.Tick import Tick
+from src.Commands.Tick import Tick
+from src.Models.Model import Model
 
-class Client:
+
+class Client(Model):
 
     LEFT = 0
     NONE = 1
     RIGHT = 2
 
     def __init__(self, display, connection):
+        Model.__init__(self, connection)
         self.display = display
-        self.connection = connection
         self.board = None
 
     def run(self):

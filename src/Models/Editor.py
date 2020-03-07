@@ -1,6 +1,7 @@
 import pygame
 from src import Ball, Brick, Board, Board_Loader, Paddle, Wall
 import numpy
+from src.Models.Model import Model
 
 from src.Commands.EditorCommands.Add_brick import Add_brick
 from src.Commands.EditorCommands.Add_ball import Add_ball
@@ -8,9 +9,10 @@ from src.Commands.EditorCommands.Add_Paddle import Add_Paddle
 from src.Commands.EditorCommands.Remove_brick import Remove_brick
 
 
-class Editor:
+class Editor(Model):
 
-    def __init__(self, display, connection, refresh_rate=1/60):
+    def __init__(self, display, connection, backend, refresh_rate=1/60):
+        Model.__init__(self, connection)
         width = int(input("Please give the width of your game"))
         height = int(input("Please give the height of your game"))
         self.display = display
@@ -21,6 +23,7 @@ class Editor:
         self.pressed_right = False
         self.selection = 0
         self.connection = connection
+        self.mouse = backend.get_mouse()
 
     def run(self):
         while not self.connection.clients_have_events():
@@ -44,12 +47,11 @@ class Editor:
             if pressed[pygame.K_s]:
                 self.save(input("Input a filename"))
 
-
-            if pygame.mouse.get_pressed()[0] == 1:
+            if self.mouse.clicked()[0] == 1:
                 if not self.pressed_left:
                     self.pressed_left = True
                     self.connection.push_to_server([self.mouse_pressed()])
-            elif pygame.mouse.get_pressed()[2] == 1:
+            elif self.mouse.clicked()[2] == 1:
                 if not self.pressed_right:
                     self.pressed_right = True
                     self.connection.push_to_server([self.mouse_delete()])
@@ -78,7 +80,7 @@ class Editor:
         Board_Loader.Board_Loader.save_board(self.board, "C:\\Users\\Tobias\\Desktop\\" + filename)
 
     def mouse_pressed(self):
-        position = pygame.mouse.get_pos()
+        position = self.mouse.get_position()
 
         x = position[0] / self.display.width * self.board.width
         y = position[1] / self.display.height * self.board.height

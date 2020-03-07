@@ -1,13 +1,14 @@
-from Events import Board_set
+from src.Events import Board_set
+from src.Models.Model import Model
 
 
-class Server:
+class Server(Model):
 
     def __init__(self, board, connection, refresh_rate=1/60, speed=1.0):
+        Model.__init__(self, connection)
         self.board = board
         self.refresh_rate = refresh_rate
         self.speed = speed
-        self.connection = connection
         self.paused = False
 
     def run(self):

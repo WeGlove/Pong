@@ -22,3 +22,7 @@ class Mouse:
     @abstractmethod
     def right_clicked(self):
         pass
+
+    @abstractmethod
+    def update(self):
+        pass
