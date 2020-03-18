@@ -27,6 +27,12 @@ class Group(Simple):
                 return True
         return False
 
+    def get_at(self, point):
+        simples = []
+        for simple in self.simples:
+            simples.extend(simple.get_at(point))
+        return simples
+
     def get_bounding_box(self):
         if not self.hasRefreshed:
             self.bounding_box = self.create_bounding_box()

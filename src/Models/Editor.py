@@ -54,7 +54,7 @@ class Editor(Model):
             elif self.mouse.clicked()[2] == 1:
                 if not self.pressed_right:
                     self.pressed_right = True
-                    self.connection.push_to_server([self.mouse_delete()])
+                    self.connection.push_to_server(self.mouse_delete())
             else:
                 self.pressed_left = False
                 self.pressed_right = False
@@ -101,15 +101,13 @@ class Editor(Model):
             return Add_Paddle(paddle)
 
     def mouse_delete(self):
-        print("deleting!")
         position = pygame.mouse.get_pos()
 
         x = position[0] / self.display.width * self.board.width
         y = position[1] / self.display.height * self.board.height
         position = numpy.array([x, y])
-        commands = []
-        for brick in self.board.bricks.get_children():
-            if brick.is_in(position):
-                commands.append(Remove_brick(brick))
+        bricks = self.board.bricks.get_at(position)
+        commands = [Remove_brick(brick) for brick in bricks]
+        return commands
 
 

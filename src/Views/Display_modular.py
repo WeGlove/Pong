@@ -1,11 +1,11 @@
 import pygame
-from Views.Display import Display
-from Views.DisplayElements.Background_Elements.Background_Mono import Background_Mono
-from Views.DisplayElements.Ball_Elements.Ball_Mono import Ball_Mono
-from Views.DisplayElements.Brick_Elements.Brick_Mono import Brick_Mono
-from Views.DisplayElements.Paddle_Elements.Paddle_Mono import Paddle_Mono
-from Views.DisplayElements.Info_Elements.Info_Mono import Info_Mono
-from Views.DisplayElements.BBox_Elements.BBox_Mono import BBox_Mono
+from src.Views.Display import Display
+from src.Views.DisplayElements.Background_Elements.Background_Mono import Background_Mono
+from src.Views.DisplayElements.Ball_Elements.Ball_Mono import Ball_Mono
+from src.Views.DisplayElements.Brick_Elements.Brick_Mono import Brick_Mono
+from src.Views.DisplayElements.Paddle_Elements.Paddle_Mono import Paddle_Mono
+from src.Views.DisplayElements.Info_Elements.Info_Mono import Info_Mono
+from src.Views.DisplayElements.BBox_Elements.BBox_Mono import BBox_Mono
 
 class Display_modular(Display):
 

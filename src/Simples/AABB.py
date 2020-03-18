@@ -1,4 +1,4 @@
-from Simples.Simple import Simple
+from src.Simples.Simple import Simple
 import numpy
 from src import Intersection
 
@@ -102,6 +102,12 @@ class AABB(Simple):
     def is_in(self, point):
         return self.position[0] - self.width / 2 <= point[0] <= self.position[0] + self.width / 2 and \
                self.position[1] - self.height / 2 <= point[1] <= self.position[1] + self.height / 2
+
+    def get_at(self, point):
+        if self.is_in(point):
+            return [self]
+        else:
+            return []
 
     def get_bounding_box(self):
         return AABB(self.position, self.width, self.height)

@@ -14,6 +14,10 @@ class Simple:
     def get_bounding_box(self):
         pass
 
+    @abstractmethod
+    def get_at(self, point):
+        pass
+
     def get_leaves(self):
         return [self]
 

@@ -1,4 +1,4 @@
-from Simples.Group import Group
+from src.Simples.Groups.Group import Group
 from src import Ray
 import numpy
 

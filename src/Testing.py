@@ -2,7 +2,8 @@ import unittest
 from src import Ball, Brick
 import numpy
 from src.Simples import AABB
-from src.Simples import BVH
+from src.Simples.Groups import BVH
+
 
 class Test(unittest.TestCase):
 

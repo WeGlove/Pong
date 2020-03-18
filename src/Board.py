@@ -1,4 +1,4 @@
-from src.Simples.BVH import BVH
+from src.Simples.Groups.BVH import BVH
 from src import Brick
 from src.Events import Ball_moved
 from src.Events import Brick_destroyed

@@ -5,10 +5,9 @@
 - The Events are really inefficient
 - The Commands are inefficient
 - Create View in congruence to the Events and Commands
-- Better Editor
 - Add Squishing Rule
 - The Intersections need an error term. Objects can get stuck inside others
-- Abstract IO Keyboard Mouse
+- Implement PygameKeyboard and keybindings
 - Key bindings
 - Backends
 
@@ -20,3 +19,4 @@
 - Internet Support
 - Sophisticated brick styles
 - A way to close to server
+- Better Editor

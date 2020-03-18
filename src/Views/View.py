@@ -1,11 +1,12 @@
 from abc import abstractmethod
 
+
 class View:
 
     @abstractmethod
-    def draw(self):
+    def update(self, event):
         pass
 
     @abstractmethod
-    def update(self, event):
+    def refresh(self):
         pass
