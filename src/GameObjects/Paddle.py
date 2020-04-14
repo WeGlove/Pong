@@ -1,12 +1,14 @@
 import numpy
-from Simples.AABB import AABB
-from Events import Paddle_moved
+from Engine import Shapes
+from src.Events import Paddle_moved
+from Engine.GameObject import GameObject
 
 
-class Paddle(AABB):
+class Paddle(Shapes.factory.get_AAB, GameObject):
 
-    def __init__(self, local, velocity, width, height, interval):
-        AABB.__init__(self, interval[0]*(1-local) + interval[1]*local, width, height)
+    def __init__(self, identifier, local, velocity, width, height, interval):
+        GameObject.__init__(self, identifier)
+        Shapes.factory.get_AAB.__init__(self, interval[0]*(1-local) + interval[1]*local, width, height)
         self.velocity = velocity
         self.local = local
         self.interval = interval
@@ -28,8 +30,8 @@ class Paddle(AABB):
                 }
 
     @staticmethod
-    def from_json(data):
-        return Paddle(data["local"], data["velocity"], data["dimensions"][0], data["dimensions"][1],
+    def from_json(data, identifier):
+        return Paddle(identifier, data["local"], data["velocity"], data["dimensions"][0], data["dimensions"][1],
                       numpy.array(data["interval"]))
 
     def move(self, direction, length):

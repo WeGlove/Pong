@@ -1,5 +1,4 @@
 import _thread
-import threading
 
 class Connection:
     """

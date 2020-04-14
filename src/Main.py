@@ -7,21 +7,23 @@ from src.Models.Server import Server
 from src.Models.Client import Client
 from src.Connection import Connection
 import threading
-from src.Backends.Pygame import Pygame as pyback
+from src.Backends.Pygame import Pygame
+
+backend = Pygame()
+
 
 with open("Resources\\configuration.json") as config:
     data = json.load(config)
     refresh_rate = 1 / data["refresh_rate"]
     speed = data["speed"]
     path = data["path"]
-
-    backend = pyback()
-
     while True:
         text = input("Type in a command:")
         if text == "editor":
             connection = Connection()
-            board = Board_Loader.Board_Loader.load_board(path + "out.json")
+            #board = Board_Loader.Board_Loader.load_board(path + "out.json")
+            from src import Board
+            board = Board.Board(100,100)
             pygame.font.init()
             display = Display_modular.Display_modular.mono_scheme(0xFF0000, 0x00FF00, 0x0000FF, 0x0FFFF00,
                                                                   pygame.font.SysFont("timesnewroman", 72), 0xFFFF00)
@@ -34,11 +36,8 @@ with open("Resources\\configuration.json") as config:
             connection = Connection()
             board = Board_Loader.Board_Loader.load_board(path + "out.json")
             pygame.font.init()
-            display = Display_modular.Display_modular.mono_scheme(0xFF0000, 0x00FF00, 0x0000FF, 0x0FFFF00,
-                                                                  pygame.font.SysFont("timesnewroman", 72), 0xFFFF00)
-
             server = Server(board, connection, refresh_rate=refresh_rate, speed=speed)
-            client = Client(display, connection)
+            client = Client(backend, connection)
             threading.Thread(target=server.run).start()
             client.run()
         elif text == "help":

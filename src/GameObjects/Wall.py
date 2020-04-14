@@ -1,9 +1,12 @@
-from Simples.AABB import AABB
+from Engine import Shapes
+from Engine.GameObject import GameObject
 
-class Wall(AABB):
 
-    def __init__(self, position, width, height):
-        AABB.__init__(self, position, width, height)
+class Wall(Shapes.factory.get_AAB, GameObject):
+
+    def __init__(self, identifier, position, width, height):
+        GameObject.__init__(self, identifier)
+        Shapes.factory.get_AAB.__init__(self, position, width, height)
 
     def hit(self):
         return False

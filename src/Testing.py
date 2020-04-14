@@ -1,8 +1,7 @@
 import unittest
-from src import Ball, Brick
+from src.GameObjects import Ball, Brick
 import numpy
-from src.Simples import AABB
-from src.Simples.Groups import BVH
+from src.Shapes.ShapeCollections.Std.Groups.RTrees import RTree
 
 
 class Test(unittest.TestCase):
@@ -52,7 +51,7 @@ class Test(unittest.TestCase):
 
 
     def test_bhv(self):
-        simples = [AABB.AABB(numpy.array([0, 0]), 1, 1), AABB.AABB(numpy.array([5, 5]), 1, 1)]
-        a = BVH.bvh(simples)
+        simples = [src.Shapes.ShapeCollections.Std.BoundingShapes.AABB(numpy.array([0, 0]), 1, 1), src.Shapes.ShapeCollections.Std.BoundingShapes.AABB(numpy.array([5, 5]), 1, 1)]
+        a = RTree.bvh(simples)
         a.divide()
         print(a.elements)

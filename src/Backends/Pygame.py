@@ -1,6 +1,7 @@
 from src.Backends.Backend import Backend
 from src.Backends.Peripherals.Pygame_Keyboard import Pygame_Keyboard
 from src.Backends.Peripherals.Pygame_Mouse import Pygame_Mouse
+from src.Views.PygameView import PygameView
 
 
 class Pygame(Backend):
@@ -16,4 +17,4 @@ class Pygame(Backend):
         return self.mouse
 
     def get_view(self):
-        pass
+        return PygameView()

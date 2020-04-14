@@ -9,9 +9,13 @@ class Client(Model):
     NONE = 1
     RIGHT = 2
 
-    def __init__(self, display, connection):
+    def __init__(self, backend, connection):
         Model.__init__(self, connection)
-        self.display = display
+        self.backend = backend
+        self.view = self.backend.get_view()
+        self.mouse = self.backend.get_mouse()
+        self.keyboard = self.backend.get_keyboard()
+
         self.board = None
 
     def run(self):
@@ -27,7 +31,7 @@ class Client(Model):
             print("Client: Received Updates")
             for event in self.connection.pop_clients():
                 event.update(self)
-            self.display.update(self.board)
+            self.view.update(self.board)
 
     def get_keyboard_input(self):
 

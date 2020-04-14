@@ -1,5 +1,6 @@
 import pygame
-from src import Ball, Brick, Board, Board_Loader, Paddle, Wall
+from src import Board, Board_Loader
+from src.GameObjects import Ball, Wall, Paddle, Brick
 import numpy
 from src.Models.Model import Model
 

@@ -1,20 +1,23 @@
-from src.Simples.Groups.BVH import BVH
-from src import Brick
+from Engine import Shapes
+from Engine.Shapes.FinitelyBounded.Factories.StdFactory import StdFactroy
+Shapes.set_factory(StdFactroy())
 from src.Events import Ball_moved
 from src.Events import Brick_destroyed
+from src.GameObjects import Brick
+from Engine.GameObjectHashMap import GameObjectHashMap
 
 
 class Board:
 
-    def __init__(self, width, height, bricks=None, balls=None, paddle=None):
+    def __init__(self, width, height):
         self.width = width
         self.height = height
 
-        self.balls = [] if balls is None else balls
-        self.paddle = paddle #TODO paddle broke
-        self.bricks = BVH([] if bricks is None else bricks)
-        self.bricks.divide()
-        self.brick_count = 0 if bricks is None else len(bricks)
+        self.balls = []
+        self.paddle = None
+        self.bricks = Shapes.factory.get_LA([])
+        self.brick_count = 0
+        self.game_objects = GameObjectHashMap()
 
         self.bricks_destroyed = 0
 
@@ -53,7 +56,7 @@ class Board:
                 intersection = intersections[min][0]
                 t = intersection.t
                 if intersection.intersected.hit():
-                    intersection.parents[-1].simples.remove(intersection.intersected)
+                    self.bricks.delete(hash(intersection.intersected))
                     self.bricks_destroyed += 1
                     self.brick_count -= 1
                 print(remaining_balls[min])
@@ -63,7 +66,6 @@ class Board:
                 speeds[min] -= speed
                 intersections[min] = self.intersect(self.balls[min])
         return [Ball_moved.Ball_moved(self.balls), Brick_destroyed.Brick_destroyed(self.bricks)]
-
 
     def intersect(self, Ball):
         intersections = self.bricks.intersect(Ball)

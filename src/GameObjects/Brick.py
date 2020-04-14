@@ -1,9 +1,12 @@
-from Simples.AABB import AABB
+from Engine import Shapes
+from Engine.GameObject import GameObject
 
-class Brick(AABB):
 
-    def __init__(self, position, width, height, hits=1, style=0):
-        AABB.__init__(self, position, width, height)
+class Brick(Shapes.factory.get_AAB, GameObject):
+
+    def __init__(self, identifier, position, width, height, hits=1, style=0):
+        GameObject.__init__(self, identifier)
+        Shapes.factory.get_AAB.__init__(self, position, width, height)
         self.hits = hits
         self.style = style
 

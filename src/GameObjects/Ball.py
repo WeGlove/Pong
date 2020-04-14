@@ -1,10 +1,12 @@
-from src.Ray import Ray
+from Engine.Ray import Ray
 import numpy
+from Engine.GameObject import GameObject
 
 
-class Ball(Ray):
+class Ball(Ray, GameObject):
 
-    def __init__(self, position, velocity, radius=0):
+    def __init__(self, identifier, position, velocity, radius=0):
+        GameObject.__init__(self, identifier)
         Ray.__init__(self, position, velocity, radius)
 
     def __str__(self):
@@ -17,5 +19,5 @@ class Ball(Ray):
                 }
 
     @staticmethod
-    def from_json(data):
-        return Ball(numpy.array(data["position"]), numpy.array(data["velocity"]), data["radius"])
+    def from_json(data, identifier):
+        return Ball(identifier, numpy.array(data["position"]), numpy.array(data["velocity"]), data["radius"])
