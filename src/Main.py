@@ -8,6 +8,9 @@ from src.Models.Client import Client
 from src.Connection import Connection
 import threading
 from src.Backends.Pygame import Pygame
+from src import Commands
+from src.EventFactories.Std.StdFactory import StdFactory
+Commands.set_factory(StdFactory())
 
 backend = Pygame()
 

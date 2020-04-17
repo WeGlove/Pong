@@ -1,5 +1,5 @@
-from Events.Ball_moved import Ball_moved
-from Commands.Command import Command
+from src.Commands.Command import Command
+from src import Commands
 
 
 class Add_ball(Command):
@@ -9,4 +9,4 @@ class Add_ball(Command):
 
     def execute(self, model):
         model.board.balls = self.balls
-        return [Ball_moved(self.balls)]
+        return [Commands.factory.Ball_moved(self.balls)]

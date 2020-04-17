@@ -1,4 +1,4 @@
-from Events.Event import Event
+from src.EventFactories.Event import Event
 
 
 class Ball_moved(Event):

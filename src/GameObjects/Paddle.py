@@ -1,6 +1,6 @@
 import numpy
 from Engine import Shapes
-from src.Events import Paddle_moved
+from src.EventFactories.Std import Paddle_moved
 from Engine.GameObject import GameObject
 
 

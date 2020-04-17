@@ -1,17 +1,17 @@
-from Events.Event import Event
+from src.EventFactories.Event import Event
 
 
-class Paddle_moved(Event):
+class Brick_destroyed(Event):
     """
     The Brick_destroyed Event
     Updates the board to the new state of the bvh
     """
 
-    def __init__(self, paddle):
+    def __init__(self, tree):
         """
         :param tree: The BVH holding the bricks
         """
-        self.paddle = paddle
+        self.tree = tree
 
     def update(self, model):
-        model.board.paddle = self.paddle
+        model.board.bricks = self.tree

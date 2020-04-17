@@ -1,5 +1,5 @@
-from Events.Paddle_set import Paddle_set
-from Commands.Command import Command
+from src.Commands.Command import Command
+from src import Commands
 
 
 class Add_Paddle(Command):
@@ -8,4 +8,4 @@ class Add_Paddle(Command):
         self.paddle = paddle
 
     def execute(self, model):
-        return [Paddle_set(self.paddle)]
+        return [Commands.factory.Paddle_set(self.paddle)]

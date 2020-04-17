@@ -1,4 +1,5 @@
-from Events.Event import Event
+from src.EventFactories.Event import Event
+
 
 
 class Board_set(Event):

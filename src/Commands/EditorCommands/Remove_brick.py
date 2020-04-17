@@ -1,5 +1,5 @@
-from Events.Brick_destroyed import Brick_destroyed
-from Commands.Command import Command
+from src.Commands.Command import Command
+from src import Commands
 
 
 class Remove_brick(Command):
@@ -9,4 +9,4 @@ class Remove_brick(Command):
 
     def execute(self, model):
         model.board.bricks.remove_simple(self.brick)
-        return [Brick_destroyed(self.brick)]
+        return [Commands.factory.Brick_destroyed(self.brick)]

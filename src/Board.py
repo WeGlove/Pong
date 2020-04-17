@@ -1,8 +1,7 @@
 from Engine import Shapes
 from Engine.Shapes.FinitelyBounded.Factories.StdFactory import StdFactroy
 Shapes.set_factory(StdFactroy())
-from src.Events import Ball_moved
-from src.Events import Brick_destroyed
+from src.EventFactories.Std import Brick_destroyed, Ball_moved
 from src.GameObjects import Brick
 from Engine.GameObjectHashMap import GameObjectHashMap
 

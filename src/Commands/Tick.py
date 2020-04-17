@@ -1,4 +1,4 @@
-from Commands.Command import Command
+from src.Commands.Command import Command
 
 
 class Tick(Command):

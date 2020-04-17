@@ -1,4 +1,4 @@
-from src.Events import Board_set
+from src.EventFactories.Std import Board_set
 from src.Models.Model import Model
 
 

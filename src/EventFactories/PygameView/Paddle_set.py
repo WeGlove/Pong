@@ -1,4 +1,4 @@
-from Events.Event import Event
+from src.EventFactories.Event import Event
 
 
 class Paddle_set(Event):

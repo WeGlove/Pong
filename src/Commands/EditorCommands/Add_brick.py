@@ -1,5 +1,5 @@
-from Events.Brick_destroyed import Brick_destroyed
-from Commands.Command import Command
+from src.Commands.Command import Command
+from src import Commands
 
 
 class Add_brick(Command):
@@ -9,4 +9,4 @@ class Add_brick(Command):
 
     def execute(self, model):
         model.board.bricks = self.tree
-        return [Brick_destroyed(self.tree)]
+        return [Commands.factory.Brick_destroyed(self.tree)]
