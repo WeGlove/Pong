@@ -15,3 +15,6 @@ class Paddle_moved(Event):
 
     def update(self, model):
         model.board.paddle = self.paddle
+
+    def view_event(self, factory):
+        return factory.Paddle_moved(self)

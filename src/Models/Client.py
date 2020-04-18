@@ -31,7 +31,8 @@ class Client(Model):
             print("Client: Received Updates")
             for event in self.connection.pop_clients():
                 event.update(self)
-            self.view.update(self.board)
+                self.view.update(event)
+            self.view.refresh()
 
     def get_keyboard_input(self):
 

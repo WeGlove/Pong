@@ -5,7 +5,7 @@ from src import Board_Loader
 import json
 from src.Models.Server import Server
 from src.Models.Client import Client
-from src.Connection import Connection
+from Engine.Connection import Connection
 import threading
 from src.Backends.Pygame import Pygame
 from src import Commands

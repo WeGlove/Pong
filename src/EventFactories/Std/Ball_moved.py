@@ -11,3 +11,6 @@ class Ball_moved(Event):
 
     def update(self, model):
         model.board.balls = self.balls
+
+    def view_event(self, factory):
+        return factory.Ball_moved(self)

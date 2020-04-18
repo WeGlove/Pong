@@ -1,13 +1,10 @@
-from src.EventFactories.Event import Event
-
-
-class Ball_moved(Event):
+class Ball_moved:
     """
     The Ball moved Event updates the balls in the board
     """
 
-    def __init__(self, balls):
-        self.balls = balls
+    def __init__(self, event):
+        self.balls = event.balls
 
     def update(self, model):
-        model.board.balls = self.balls
+        model.draw_balls(self.balls)

@@ -15,3 +15,6 @@ class Brick_destroyed(Event):
 
     def update(self, model):
         model.board.bricks = self.tree
+
+    def view_event(self, factory):
+        return factory.Brick_destroyed(self)

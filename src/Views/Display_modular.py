@@ -7,6 +7,7 @@ from src.Views.DisplayElements.Paddle_Elements.Paddle_Mono import Paddle_Mono
 from src.Views.DisplayElements.Info_Elements.Info_Mono import Info_Mono
 from src.Views.DisplayElements.BBox_Elements.BBox_Mono import BBox_Mono
 
+
 class Display_modular(Display):
 
     def __init__(self, brick, ball, background, paddle, info, bbox, width=800, height=800, width_game=100, height_game=100):

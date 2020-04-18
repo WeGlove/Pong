@@ -1,6 +1,6 @@
 from src.Backends.Backend import Backend
-from src.Backends.Peripherals.Pygame_Keyboard import Pygame_Keyboard
-from src.Backends.Peripherals.Pygame_Mouse import Pygame_Mouse
+from Engine.Peripherals.Pygame_Keyboard import Pygame_Keyboard
+from Engine.Peripherals.Pygame_Mouse import Pygame_Mouse
 from src.Views.PygameView import PygameView
 
 

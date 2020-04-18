@@ -11,3 +11,6 @@ class Board_set(Event):
 
     def update(self, model):
         model.board = self.board
+
+    def view_event(self, factory):
+        return factory.Board_set(self)
