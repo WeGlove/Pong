@@ -1,6 +1,5 @@
-from Engine import Shapes
-from Engine.Shapes.FinitelyBounded.Factories.StdFactory import StdFactroy
-Shapes.set_factory(StdFactroy())
+import Engine
+Engine.init()
 from src.EventFactories.Std import Brick_destroyed, Ball_moved
 from src.GameObjects import Brick
 from Engine.GameObjectHashMap import GameObjectHashMap
@@ -14,7 +13,7 @@ class Board:
 
         self.balls = []
         self.paddle = None
-        self.bricks = Shapes.factory.get_LA([])
+        self.bricks = Engine.shape_factory.LeastAddition([])
         self.brick_count = 0
         self.game_objects = GameObjectHashMap()
 

@@ -1,14 +1,14 @@
 import numpy
-from Engine import Shapes
+import Engine
+AAB = Engine.shape_factory.AAB
 from src.EventFactories.Std import Paddle_moved
 from Engine.GameObject import GameObject
 
 
-class Paddle(Shapes.factory.get_AAB, GameObject):
+class Paddle(AAB):
 
     def __init__(self, identifier, local, velocity, width, height, interval):
-        GameObject.__init__(self, identifier)
-        Shapes.factory.get_AAB.__init__(self, interval[0]*(1-local) + interval[1]*local, width, height)
+        AAB.__init__(self, interval[0]*(1-local) + interval[1]*local, width, height, identifier=identifier)
         self.velocity = velocity
         self.local = local
         self.interval = interval

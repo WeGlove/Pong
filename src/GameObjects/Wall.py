@@ -1,12 +1,11 @@
-from Engine import Shapes
-from Engine.GameObject import GameObject
+import Engine
+AAB = Engine.shape_factory.AAB
 
 
-class Wall(Shapes.factory.get_AAB, GameObject):
+class Wall(AAB):
 
     def __init__(self, identifier, position, width, height):
-        GameObject.__init__(self, identifier)
-        Shapes.factory.get_AAB.__init__(self, position, width, height)
+        AAB.__init__(self, position, width, height, identifier=identifier)
 
     def hit(self):
         return False

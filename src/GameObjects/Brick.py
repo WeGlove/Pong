@@ -1,12 +1,10 @@
-from Engine import Shapes
-from Engine.GameObject import GameObject
+import Engine
+AAB = Engine.shape_factory.AAB
 
-
-class Brick(Shapes.factory.get_AAB, GameObject):
+class Brick(AAB):
 
     def __init__(self, identifier, position, width, height, hits=1, style=0):
-        GameObject.__init__(self, identifier)
-        Shapes.factory.get_AAB.__init__(self, position, width, height)
+        AAB.__init__(self, position, width, height, identifier=identifier)
         self.hits = hits
         self.style = style
 
@@ -22,4 +20,4 @@ class Brick(Shapes.factory.get_AAB, GameObject):
         return Brick(upper_left + lower_right-upper_left/2, lower_right[0] - upper_left[0], lower_right[1] - upper_left[1])
 
     def __str__(self):
-        return "Brick: Position: " + str(self.position) + " Width/height: " + str(self.width) + " " + str(self.height) + " Hits: " + str(self.hits)
+        return "Brick: ID:" + str(self.identifier) + " Position: " + str(self.position) + " Width/height: " + str(self.width) + " " + str(self.height) + " Hits: " + str(self.hits)
