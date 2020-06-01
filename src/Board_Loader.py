@@ -27,6 +27,7 @@ class Board_Loader:
             next_id = board.game_objects.getNextID()
             paddle = Paddle.from_json(data["Paddle"], next_id)
             board.game_objects[next_id] = paddle
+            board.paddle = paddle
 
             bricks_data = data["Bricks"]
             bricks = []

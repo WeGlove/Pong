@@ -10,3 +10,7 @@ class View:
     @abstractmethod
     def refresh(self):
         pass
+
+    @abstractmethod
+    def clear(self):
+        pass

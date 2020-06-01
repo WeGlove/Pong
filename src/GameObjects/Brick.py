@@ -1,6 +1,7 @@
 import Engine
 AAB = Engine.shape_factory.AAB
 
+
 class Brick(AAB):
 
     def __init__(self, identifier, position, width, height, hits=1, style=0):

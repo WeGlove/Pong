@@ -11,5 +11,4 @@ class Paddle_moved:
         self.paddle = event.paddle
 
     def update(self, model):
-        print("PADDLE!")
         model.draw_paddle(self.paddle)

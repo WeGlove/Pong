@@ -7,14 +7,15 @@ class Brick_destroyed(Event):
     Updates the board to the new state of the bvh
     """
 
-    def __init__(self, tree):
+    def __init__(self, brick):
         """
         :param tree: The BVH holding the bricks
         """
-        self.tree = tree
+        self.brick = brick
 
     def update(self, model):
-        model.board.bricks = self.tree
+        model.board.bricks.delete(hash(self.brick))
+
 
     def view_event(self, factory):
         return factory.Brick_destroyed(self)

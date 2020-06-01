@@ -30,7 +30,13 @@ class Board:
         remaining_balls = [ball for ball in self.balls]
         speeds = [speed] * len(self.balls)
         intersections = [self.intersect(ball) for ball in self.balls]
+        for intersection in intersections:
+            print("####")
+            for inter in intersection:
+                print(inter)
+        events = []
         while not len(remaining_balls) == 0:
+            print(speeds)
             min = None
             for i in range(len(remaining_balls)):
                 if len(intersections[i]) == 0:
@@ -39,7 +45,7 @@ class Board:
                     del speeds[i]
                     del intersections[i]
                     break
-                elif intersections[i][0].t > speed:
+                elif intersections[i][0].t > speeds[i] * remaining_balls[i].get_speed():
                     remaining_balls[i].move(speed)
                     del remaining_balls[i]
                     del speeds[i]
@@ -55,15 +61,16 @@ class Board:
                 t = intersection.t
                 if intersection.intersected.hit():
                     self.bricks.delete(hash(intersection.intersected))
+                    events += [Brick_destroyed.Brick_destroyed(intersection.intersected)]
                     self.bricks_destroyed += 1
                     self.brick_count -= 1
                 print(remaining_balls[min])
                 print(intersection)
                 remaining_balls[min].move(t)
                 remaining_balls[min].reflect(intersection.normal)
-                speeds[min] -= speed
+                speeds[min] -= t
                 intersections[min] = self.intersect(self.balls[min])
-        return [Ball_moved.Ball_moved(self.balls), Brick_destroyed.Brick_destroyed(self.bricks)]
+        return events + [Ball_moved.Ball_moved(self.balls)]
 
     def intersect(self, Ball):
         intersections = self.bricks.intersect(Ball)

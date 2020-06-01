@@ -8,7 +8,9 @@ class Brick_destroyed:
         """
         :param tree: The BVH holding the bricks
         """
-        self.tree = event.tree
+        self.brick = event.brick
 
     def update(self, model):
-        model.draw_bricks(self.tree.get_leaves())
+        model.undraw_bricks([self.brick])
+        overlaps = model.board.bricks.overlaps(self.brick.get_bounding_box())
+        model.draw_bricks(overlaps)

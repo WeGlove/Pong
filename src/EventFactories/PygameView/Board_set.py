@@ -8,5 +8,6 @@ class Board_set:
 
     def update(self, model):
         model.board = self.board
-        model.draw_balls()
         model.draw_bricks(self.board.bricks.get_leaves())
+        model.draw_balls(model.board.balls)
+

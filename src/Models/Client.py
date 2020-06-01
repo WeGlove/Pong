@@ -21,14 +21,15 @@ class Client(Model):
     def run(self):
         self.connection.client_wait_for_msg()
         print("Client: Received Board")
-        self.board = self.connection.pop_clients()[0].board
+        event = self.connection.pop_clients()[0]
+        event.update(self)
+        self.view.update(event)
         while True:
             pygame.event.get()
             self.connection.push_to_server([Tick(self.get_keyboard_input())])
-            print("Client: Sent direction")
             while not self.connection.clients_have_events():
                 pass
-            print("Client: Received Updates")
+            self.view.clear()
             for event in self.connection.pop_clients():
                 event.update(self)
                 self.view.update(event)

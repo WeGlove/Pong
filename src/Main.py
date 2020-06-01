@@ -49,4 +49,4 @@ with open("Resources\\configuration.json") as config:
             print("Good Night")
             break
         else:
-            print(f"Command <{text}> not found, try < help >")
+            print(f"Command <{text}> not found, try <help>")
